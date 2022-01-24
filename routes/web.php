@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\PetsController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 
 /*
@@ -18,8 +20,9 @@ use Inertia\Inertia;
 
 Route::middleware(['guest'])->get('/', [WelcomeController::class, 'show'])->name('welcome');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
-
+Route::middleware(['auth:sanctum', 'verified'])->prefix('user')->group(function() {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('pets', [PetsController::class, 'index'])->name('pets.index');
+    Route::get('profile/{user:username}', [ProfileController::class, 'show'])->name('profiles.show');
+});
 

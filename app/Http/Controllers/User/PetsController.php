@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Pet;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ProfileController extends Controller
+class PetsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Pets',[
+            'pets' => auth()->user()->pets,
+        ]);
     }
 
     /**
@@ -43,14 +45,12 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return Inertia::render('User/Profile/Show', [
-            'profile' => $user,
-        ]);
+        //
     }
 
     /**
