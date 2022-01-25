@@ -19,6 +19,7 @@ class CreatePetsTable extends Migration
             $table->text('name');
             $table->text('race');
             $table->integer('age');
+            $table->timestamps();
         });
     }
 

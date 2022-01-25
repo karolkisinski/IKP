@@ -676,6 +676,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0;
 }.prose > :where(:last-child):not(:where([class~="not-prose"] *)){
   margin-bottom: 0;
+}.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }.fixed{
   position: fixed;
 }.absolute{
@@ -709,6 +719,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.my-5{
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+}.-my-2{
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
 }.ml-3{
   margin-left: 0.75rem;
 }.-ml-px{
@@ -759,10 +772,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: -1px;
 }.block{
   display: block;
+}.inline-block{
+  display: inline-block;
 }.flex{
   display: flex;
 }.inline-flex{
   display: inline-flex;
+}.table{
+  display: table;
 }.grid{
   display: grid;
 }.hidden{
@@ -821,6 +838,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 50%;
 }.min-w-0{
   min-width: 0px;
+}.min-w-full{
+  min-width: 100%;
 }.max-w-screen-xl{
   max-width: 1280px;
 }.max-w-7xl{
@@ -909,8 +928,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}.divide-y > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}.divide-gray-200 > :not([hidden]) ~ :not([hidden]){
+  --tw-divide-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-divide-opacity));
 }.overflow-hidden{
   overflow: hidden;
+}.overflow-x-auto{
+  overflow-x: auto;
 }.overflow-y-auto{
   overflow-y: auto;
 }.overflow-y-hidden{
@@ -918,6 +946,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.truncate{
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}.whitespace-nowrap{
   white-space: nowrap;
 }.rounded-md{
   border-radius: 0.375rem;
@@ -1098,6 +1128,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-align: center;
 }.text-right{
   text-align: right;
+}.align-middle{
+  vertical-align: middle;
 }.font-sans{
   font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }.font-mono{
@@ -1312,6 +1344,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.hover\:text-white:hover{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}.hover\:text-indigo-900:hover{
+  --tw-text-opacity: 1;
+  color: rgb(49 46 129 / var(--tw-text-opacity));
+}.hover\:text-red-900:hover{
+  --tw-text-opacity: 1;
+  color: rgb(127 29 29 / var(--tw-text-opacity));
 }.focus\:z-10:focus{
   z-index: 10;
 }.focus\:border-blue-300:focus{
@@ -1435,12 +1473,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   }.sm\:-my-px{
     margin-top: -1px;
     margin-bottom: -1px;
-  }.sm\:mx-2{
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }.sm\:my-3{
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
+  }.sm\:-mx-6{
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
   }.sm\:ml-3{
     margin-left: 0.75rem;
   }.sm\:-mr-2{
@@ -1546,9 +1581,9 @@ Ensure the default browser behavior of the `hidden` attribute.
     grid-column: span 2 / span 2;
   }.md\:col-span-1{
     grid-column: span 1 / span 1;
-  }.md\:mx-4{
-    margin-left: 1rem;
-    margin-right: 1rem;
+  }.md\:mx-auto{
+    margin-left: auto;
+    margin-right: auto;
   }.md\:mt-0{
     margin-top: 0px;
   }.md\:grid{
@@ -1563,15 +1598,15 @@ Ensure the default browser behavior of the `hidden` attribute.
     border-top-width: 0px;
   }.md\:border-l{
     border-left-width: 1px;
-  }.md\:px-10{
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
   }
 }@media (min-width: 1024px){.lg\:col-span-4{
     grid-column: span 4 / span 4;
   }.lg\:mx-auto{
     margin-left: auto;
     margin-right: auto;
+  }.lg\:-mx-8{
+    margin-left: -2rem;
+    margin-right: -2rem;
   }.lg\:w-1\/4{
     width: 25%;
   }.lg\:px-8{

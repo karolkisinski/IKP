@@ -120,7 +120,7 @@
 
         <div class="flex flex-wrap pt-16 sm:flex-nowrap">
             <!-- Page Content -->
-            <main class="bg-gray-200 shadow rounded my-5 py-6 px-4 w-full sm:w-2/3 sm:mx-2 sm:my-3 md:mx-4 md:px-10 lg:mx-auto">
+            <main class="bg-gray-200 shadow rounded my-5 py-6 px-4 w-full sm:w-2/3 sm:mx-auto md:mx-auto lg:mx-auto">
                 <slot></slot>
             </main>
         </div>

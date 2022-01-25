@@ -1,6 +1,6 @@
 <template>
     <div>
-        {{ pet.name }} {{ pet.race }} {{ pet.age }}
+
     </div>
 </template>
 

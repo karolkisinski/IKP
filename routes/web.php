@@ -23,6 +23,10 @@ Route::middleware(['guest'])->get('/', [WelcomeController::class, 'show'])->name
 Route::middleware(['auth:sanctum', 'verified'])->prefix('user')->group(function() {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('pets', [PetsController::class, 'index'])->name('pets.index');
+    Route::prefix('pets')->name('pets.')->group(function() {
+        Route::post('', [PetsController::class, 'store'])->name('store');
+        Route::delete('/delete/{pet}', [PetsController::class, 'destroy'])->name('destroy');
+    });
     Route::get('profile/{user:username}', [ProfileController::class, 'show'])->name('profiles.show');
 });
 

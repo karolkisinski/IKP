@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pet;
-use Illuminate\Http\Request;
+use App\Http\Requests\PetFormRequest;
 use Inertia\Inertia;
 
 class PetsController extends Controller
@@ -34,13 +34,20 @@ class PetsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Request\PetFormRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PetFormRequest $request)
     {
-        //
-    }
+        $data = $request->only(['name', 'user_id', 'age', 'race']);
+        auth()->user()->pets()->create([
+            'name' => $data['name'],
+            'race' => $data['race'],
+            'age' => $data['age'],
+
+            ]);
+        return back();
+  }
 
     /**
      * Display the specified resource.
@@ -79,11 +86,12 @@ class PetsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Pet $pet
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pet $pet)
     {
-        //
+        $pet->delete();
+        return back();
     }
 }
