@@ -39,8 +39,8 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-xxs md:text-xs lg:text-sm">
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <form @submit.prevent="deletePet">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-xxs md:text-xs lg:text-sm">
+                                    <form @submit.prevent="deletePet(pet.id)">
                                         <button type="submit" class="text-red-600 hover:text-red-900">Delete</button>
                                     </form>
                                 </td>
@@ -72,16 +72,17 @@ export default {
         }
     },
     methods: {
-        deletePet() {
-            this.deleteForm.delete(this.route('pets.destroy', this.pets),{
+        deletePet(pet) {
+            this.deleteForm.delete(this.route('pets.destroy', pet),{
                 preserveScroll: true,
-                onSuccess:()=>{
+                onSuccess:() => {
                     Toast.fire({
                         icon: 'success',
                         title: 'Pet has successfully been deleted!'
-                    })
+                    });
+                    this.$emit('deletePet');
                 },
-                onError:()=>{
+                onError:() => {
                     Toast.fire({
                         icon: 'error',
                         title: 'Something went wrong!'

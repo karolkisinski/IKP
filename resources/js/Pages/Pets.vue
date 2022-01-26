@@ -11,7 +11,7 @@
                 </h2>
             </div>
         </template>
-        <form @submit.prevent="submit" class="w-full">
+        <form @submit.prevent="submit" class="w-full" v-if="this.isEmptyPets || this.showPetAddForm">
             <div>
                 <input name="name" class="flex border rounded px-2 py-2 w-25" placeholder="Add your pet name" v-model="form.name">
                 <div>
@@ -68,27 +68,50 @@ export default defineComponent({
                 race: this.race,
                 age: this.age,
             }),
+            isEmptyPets: null,
+            showPetAddForm: false,
+            isAdmin: null,
         }
     },
     methods: {
         submit() {
             this.form.post(this.route('pets.store'), {
                 preserveScroll: true,
-                onSuccess:()=> {
+                onSuccess: () => {
                     Toast.fire({
                         icon: 'success',
                         title: 'Your pet has successfully been added!',
-                    }),
-                        this.form.body = null
+                    });
+                    this.form.name = null;
+                    this.form.race = null;
+                    this.form.age = null;
+                    this.isEmptyPets = false;
+                    this.showPetAddForm = false;
                 },
-                onError:()=>{
+                onError: () => {
                     Toast.fire({
                         icon: 'error',
                         title: 'Something went wrong!'
-                    })
+                    });
                 }
             })
-        }
+        },
+
+        handleIsEmptyPets() {
+            this.isEmptyPets = this.pets.length === 0;
+        },
+
+        handleShowPetAddForm() {
+            this.showPetAddForm = true;
+        },
+
+        handleIsAdmin() {
+            this.isAdmin = this.$page.props.user.role === 'ROLE_ADMIN';
+        },
+    },
+    beforeMount() {
+        this.handleIsEmptyPets();
+        this.handleIsAdmin();
     }
 });
 </script>
