@@ -32,9 +32,9 @@ class PetFormRequest extends FormRequest
 
     public function messages() {
         return [
-            'name.required' => 'A name is required',
-            'race.required' => 'A race is required',
-            'age.required' => 'Age is required',
+            'name.required' => 'A name is required!',
+            'race.required' => 'A race is required!',
+            'age.required' => 'Age is required!',
         ];
     }
 }

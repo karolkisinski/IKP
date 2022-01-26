@@ -15,6 +15,9 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
                 primary: ['Montserrat'],
             },
+            fontSize: {
+                'xxs': '.50rem',
+            },
             spacing: {
                 '128': '32rem',
             }

@@ -1,4 +1,3 @@
-
 <template>
     <div>
         <!-- This example requires Tailwind CSS v2.0+ -->
@@ -9,35 +8,35 @@
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xxs md:text-xs lg:text-sm font-medium text-gray-500 uppercase tracking-wider sm:text-xxs">
                                     Name
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xxs md:text-xs lg:text-sm font-medium text-gray-500 uppercase tracking-wider sm:text-xxs">
                                     Race
                                 </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th scope="col" class="px-6 py-3 text-left text-xxs md:text-xs lg:text-sm font-medium text-gray-500 uppercase tracking-wider sm:text-xxs">
                                     Age
                                 </th>
-                                <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Edit</span>
+                                <th scope="col" class="px-6 py-3 text-left text-xxs md:text-xs lg:text-sm font-medium text-gray-500 uppercase tracking-wider sm:text-xxs">
+                                    Edit
                                 </th>
-                                <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Delete</span>
+                                <th scope="col" class="px-6 py-3 text-left text-xxs md:text-xs lg:text-sm font-medium text-gray-500 uppercase tracking-wider sm:text-xxs">
+                                    Delete
                                 </th>
                             </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                             <tr v-for="(pet, key) in pets" :key="key">
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-6 py-4 whitespace-nowrap text-xxs md:text-xs lg:text-sm">
                                     {{ pet.name }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-6 py-4 whitespace-nowrap text-xxs md:text-xs lg:text-sm">
                                     {{ pet.race }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-xxs md:text-xs lg:text-sm">
                                     {{ pet.age }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-xxs md:text-xs lg:text-sm">
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

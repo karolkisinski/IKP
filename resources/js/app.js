@@ -8,7 +8,7 @@ const appName = window.document.getElementsByTagName('title')[0]?.innerText || '
 
 window.Toast = Swal.mixin({
     toast: true,
-    position: 'center',
+    position: 'top',
     showConfirmButton: false,
     timer: 1500,
     timerProgressBar: true,
