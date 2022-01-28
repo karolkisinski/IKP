@@ -8,7 +8,7 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="flex-shrink-0 flex items-center">
-                            <Link :href="route('dashboard.index')" class="h-3/4 w-10">
+                            <Link :href="$page.props.user.role == 'ROLE_ADMIN' ? route('admin.dashboard') : route('dashboard.index')" class="h-3/4 w-10">
                                 <img :src="'/storage/images/foot.webp'" alt="IKP">
                             </Link>
                         </div>
@@ -140,7 +140,6 @@
     import JetNavLink from '@/Jetstream/NavLink.vue'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink.vue'
     import { Head, Link } from '@inertiajs/inertia-vue3';
-    import SideBar from '@/Components/SideBar';
 
     export default defineComponent({
         props: {
@@ -155,7 +154,6 @@
             JetNavLink,
             JetResponsiveNavLink,
             Link,
-            SideBar,
         },
 
         data() {

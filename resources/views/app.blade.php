@@ -15,6 +15,8 @@
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
     </head>
     <body class="font-sans antialiased" style="background-image: url({{ url('storage/images/background.jpg') }});">
         @inertia
