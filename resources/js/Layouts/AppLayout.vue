@@ -14,7 +14,7 @@
                         </div>
 
                         <!-- Navigation Links -->
-                        <div class="hidden space-x-8 sm:ml-10 sm:flex">
+                        <div v-if="$page.props.user.role == 'ROLE_USER'" class="hidden space-x-8 sm:ml-10 sm:flex">
                             <jet-nav-link :href="route('dashboard.index')" :active="route().current('dashboard.index')">
                                 Dashboard
                             </jet-nav-link>

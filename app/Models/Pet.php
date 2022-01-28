@@ -9,7 +9,6 @@ class Pet extends Model
 
     protected $fillable = ['user_id', 'name', 'race', 'age'];
 
-
     protected $with = ['user'];
     public $timestamps = false;
     public function user(){

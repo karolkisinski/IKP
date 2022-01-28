@@ -91,6 +91,9 @@ export default defineComponent({
         PagesLayout,
         Pets,
         JetInputError,
+        JetDangerButton,
+        JetSecondaryButton,
+        JetConfirmationModal,
     },
     data() {
         return {
@@ -135,6 +138,10 @@ export default defineComponent({
 
         handleShowPetAddForm() {
             this.showPetAddForm = true;
+        },
+
+        handleHidePetAddForm() {
+            this.showPetAddForm = false;
         },
 
         handleIsAdmin() {

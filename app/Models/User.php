@@ -84,4 +84,9 @@ class User extends Authenticatable
     public function pets(){
         return $this->hasMany(Pet::class);
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->role == self::ROLE_ADMIN;
+    }
 }

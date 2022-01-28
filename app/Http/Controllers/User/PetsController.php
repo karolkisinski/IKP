@@ -78,9 +78,15 @@ class PetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PetFormRequest $request, Pet $pet)
     {
-        //
+        $pet->name = $request->input('name');
+        $pet->race = $request->input('race');
+        $pet->age = $request->input('age');
+
+        $pet->save();
+
+        return back();
     }
 
     /**

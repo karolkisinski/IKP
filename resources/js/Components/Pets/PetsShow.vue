@@ -51,6 +51,36 @@
             </div>
         </div>
     </div>
+    <jet-confirmation-modal :show="this.showPetEditForm" @close="false" max-width="md">
+        <template #content>
+            <form @submit.prevent="submit" class="w-full" v-if="this.showPetEditForm">
+                <div>
+                    <input name="name" class="flex border rounded px-2 py-2 w-25" placeholder="Add your pet name" v-model="editForm.name">
+                    <div>
+                        <jet-input-error :message="editForm.errors.name" class="mt-2" v-if="editForm.errors.name"></jet-input-error>
+                    </div>
+                    <input name="race" class="flex border rounded px-2 py-2 w-25 mt-2" placeholder="Add your pet race" v-model="editForm.race">
+                    <div>
+                        <jet-input-error :message="editForm.errors.race" class="mt-2" v-if="editForm.errors.race"></jet-input-error>
+                    </div>
+                    <input name="age" type="number" class="flex border rounded px-2 py-2 w-25 mt-2" placeholder="Add your pet age" v-model="editForm.age">
+                    <div>
+                        <jet-input-error :message="editForm.errors.age" class="mt-2" v-if="editForm.errors.age"></jet-input-error>
+                    </div>
+                </div>
+            </form>
+        </template>
+
+        <template #footer>
+            <jet-secondary-button @click.native="handleHidePetAddForm">
+                Anuluj
+            </jet-secondary-button>
+
+            <jet-danger-button type="submit" class="ml-2" @click.native="submit" :class="{ 'opacity-25': editForm.processing }" :disabled="editForm.processing">
+                Zapisz
+            </jet-danger-button>
+        </template>
+    </jet-confirmation-modal>
 </template>
 
 <script>
@@ -66,6 +96,7 @@ import JetConfirmationModal from '@/Jetstream/ConfirmationModal'
 
 export default {
     props: ['pets'],
+    emits: ['deletePet'],
     components: {
         PetItem,
         JetLabel,
