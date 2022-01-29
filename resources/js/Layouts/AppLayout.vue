@@ -21,6 +21,17 @@
                             <jet-nav-link :href="route('pets.index')" :active="route().current('pets.index')">
                                 Pets
                             </jet-nav-link>
+                            <jet-nav-link :href="route('services.index')" :active="route().current('services.index')">
+                                Services
+                            </jet-nav-link>
+                        </div>
+                        <div v-if="$page.props.user.role == 'ROLE_ADMIN'" class="hidden space-x-8 sm:ml-10 sm:flex">
+                            <jet-nav-link :href="route('admin.dashboard')" :active="route().current('admin.dashboard')">
+                                Dashboard
+                            </jet-nav-link>
+                            <jet-nav-link :href="route('admin.services')" :active="route().current('admin.services')">
+                                Services
+                            </jet-nav-link>
                         </div>
                     </div>
 
@@ -86,9 +97,23 @@
 
             <!-- Responsive Navigation Menu -->
             <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
-                <div class="pt-2 pb-3 space-y-1">
+                <div v-if="$page.props.user.role == 'ROLE_USER'" class="pt-2 pb-3 space-y-1">
                     <jet-responsive-nav-link :href="route('dashboard.index')" :active="route().current('dashboard.index')">
                         Dashboard
+                    </jet-responsive-nav-link>
+                    <jet-responsive-nav-link :href="route('pets.index')" :active="route().current('pets.index')">
+                        Pets
+                    </jet-responsive-nav-link>
+                    <jet-responsive-nav-link :href="route('services.index')" :active="route().current('services.index')">
+                        Services
+                    </jet-responsive-nav-link>
+                </div>
+                <div v-if="$page.props.user.role == 'ROLE_ADMIN'" class="pt-2 pb-3 space-y-1">
+                    <jet-responsive-nav-link :href="route('admin.dashboard')" :active="route().current('admin.dashboard')">
+                        Dashboard
+                    </jet-responsive-nav-link>
+                    <jet-responsive-nav-link :href="route('admin.services')" :active="route().current('admin.services')">
+                        Services
                     </jet-responsive-nav-link>
                 </div>
 

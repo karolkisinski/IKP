@@ -3,6 +3,6 @@
 
 <script>
 export default {
-    props: ['pet'],
+    props: ['service'],
 }
 </script>

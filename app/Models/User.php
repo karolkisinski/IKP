@@ -75,7 +75,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $with = ['profile'];
+    protected $with = ['profile', 'services'];
 
     public function profile(){
         return $this->hasOne(Profile::class);
@@ -83,6 +83,10 @@ class User extends Authenticatable
 
     public function pets(){
         return $this->hasMany(Pet::class);
+    }
+
+    public function services(){
+        return $this->hasMany(Service::class);
     }
 
     public function isAdmin(): bool

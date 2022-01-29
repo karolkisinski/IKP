@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServiceFormRequest;
 use App\Models\Service;
+use App\Models\ServiceType;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ServiceController extends Controller
 {
@@ -12,9 +15,12 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return Inertia::render('PetsServices',[
+            'pets' => auth()->user()->pets,
+            'services' => auth()->user()->services,
+        ]);
     }
 
     /**
@@ -33,9 +39,15 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiceFormRequest $request)
     {
-        //
+        $data = $request->only(['user_id', 'pet_name', 'service_date', 'service_type']);
+        auth()->user()->services()->create([
+            'pet_name' => $data['pet_name'],
+            'service_date' => $data['service_date'],
+            'service_type' => $data['service_type'],
+        ]);
+        return back();
     }
 
     /**
@@ -80,6 +92,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        $service->delete();
+        return back();
     }
 }

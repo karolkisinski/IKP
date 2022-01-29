@@ -710,6 +710,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   right: 0px;
 }.top-0{
   top: 0px;
+}.left-5{
+  left: 1.25rem;
 }.z-0{
   z-index: 0;
 }.z-50{
@@ -779,10 +781,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: -1px;
 }.mb-2{
   margin-bottom: 0.5rem;
+}.ml-5{
+  margin-left: 1.25rem;
+}.ml-10{
+  margin-left: 2.5rem;
+}.ml-20{
+  margin-left: 5rem;
+}.ml-16{
+  margin-left: 4rem;
+}.ml-14{
+  margin-left: 3.5rem;
 }.block{
   display: block;
 }.inline-block{
   display: inline-block;
+}.inline{
+  display: inline;
 }.flex{
   display: flex;
 }.inline-flex{
@@ -899,8 +913,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }.flex-row{
   flex-direction: row;
-}.flex-row-reverse{
-  flex-direction: row-reverse;
 }.flex-col{
   flex-direction: column;
 }.flex-wrap{
@@ -1052,6 +1064,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }.bg-gray-200{
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}.bg-red-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }.bg-green-200{
   --tw-bg-opacity: 1;
   background-color: rgb(187 247 208 / var(--tw-bg-opacity));
@@ -1073,6 +1088,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0.5rem;
 }.p-6{
   padding: 1.5rem;
+}.p-3{
+  padding: 0.75rem;
 }.px-4{
   padding-left: 1rem;
   padding-right: 1rem;

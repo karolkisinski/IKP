@@ -7,15 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    protected $fillable = ['pet_id', 'date', 'service_type'];
+    protected $fillable = ['user_id', 'pet_name', 'service_date', 'service_type']; //service_type_id
 
-    protected $with = ['pet'];
+    protected $with = ['users'];
     public $timestamps = false;
-    public function pet(){
-        return $this->belongsTo(Pet::class);
-    }
-
-    public function serviceType(){
-        return $this->hasOne(ServiceType::class);
+    public function users()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -19,6 +20,14 @@ class AdminController extends Controller
 
         return Inertia::render('AdminDashboard', [
             'pets' => $pets,
+        ]);
+    }
+
+    public function services()
+    {
+        $services = Service::all();
+        return Inertia::render('PetsServices', [
+            'services' => $services,
         ]);
     }
 

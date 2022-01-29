@@ -5,11 +5,11 @@
                 <h2 class="flex items-end font-semibold text-xl text-gray-800 leading-tight">
                     <img :src="$page.props.user.profile_photo_url" :alt="$page.props.user.username"
                          class="h-20 w-20 rounded-full object-cover">
-                    <span class="capitalize m1-3">
-                        Admin page
-                        <div id="petsCount">Pets in database {{ pets.length }}</div>
-                    </span>
                 </h2>
+            </div>
+            <div class="flex flex-col">
+                <div class="flex">Admin page</div>
+                <div id="petsCount" class="flex">Pets in database {{ pets.length }}</div>
             </div>
         </template>
     </pages-layout>
@@ -26,11 +26,5 @@ export default defineComponent({
         PagesLayout,
         PetItem,
     },
-    beforeMount() {
-        console.log(this.pets.length);
-    },
-    petsCount() {
-        document.getElementById("#petsCount").innerHTML = count(this.pets);
-    }
 })
 </script>

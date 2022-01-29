@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\PetsController;
 use App\Http\Controllers\User\ProfileController;
@@ -32,12 +33,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
             Route::put('/{pet}/update', [PetsController::class, 'update'])->name('update');
             Route::delete('/delete/{pet}', [PetsController::class, 'destroy'])->name('destroy');
         });
+        Route::prefix('services')->name('services.')->group(function() {
+            Route::get('/', [ServiceController::class, 'index'])->name('index');
+            Route::post('/store', [ServiceController::class, 'store'])->name('store');
+        });
     });
-
     Route::prefix('admin')->middleware(['role:'.User::ROLE_ADMIN])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/services', [AdminController::class, 'services'])->name('admin.services');
+        Route::delete('/delete/{service}', [ServiceController::class, 'destroy'])->name('admin.destroy');
     });
-
-    Route::get('profile/{user:username}', [ProfileController::class, 'show'])->name('profiles.show');
 });
 
